@@ -16,7 +16,8 @@ The aim is to build a more unity and more supportive community in areas dominate
 
 ## Mock up
 
-![mockup]()
+https://user-images.githubusercontent.com/84433857/140920711-25631381-7702-4fbc-a1cd-b6fd0920fabc.mov
+
 
 ## Deployed Link
 
