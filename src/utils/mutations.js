@@ -12,7 +12,7 @@ export const USER_SIGN_IN = gql`
   }
 `;
 
-export const ADD_USER = gql`
+export const ADD_PROFILE = gql`
   mutation addProfile($surname: String!, $email: String!, $password: String!) {
     addProfile(surname: $surname, email: $email, password: $password) {
       token
@@ -23,11 +23,15 @@ export const ADD_USER = gql`
     }
   }
 `;
-
-// export const ADD_INTEREST = gql`
-
-// `;
-
+export const ADD_INTEREST = gql`
+  mutation addInterest($profileId: ID!, $interest: String!) {
+    addInterest(profileId: $profileId, interest: $interest) {
+      _id
+      name
+      interest
+    }
+  }
+`;
 export const REMOVE_INTEREST = gql`
   mutation removeInterest($profileId: ID!) {
     removeInterest(profileId: $profileId) {

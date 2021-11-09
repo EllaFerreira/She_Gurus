@@ -1,6 +1,4 @@
 import { ThemeProvider } from "styled-components";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import Card from "./components/Card";
 import { Container } from "./components/styles/Container.style";
 import GlobalStyles from "./components/styles/Global";
@@ -12,9 +10,15 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createUploadLink } from "apollo-upload-client";
-import SignIn from "./pages/Signin";
+
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const uploadLink = createUploadLink({
   uri: "/graphql",
@@ -47,26 +51,32 @@ const theme = {
 function App() {
   return (
     <ApolloProvider client={userAuthentication}>
-      <Router>
-        <Route>
-          <ThemeProvider theme={theme}>
-            <>
-              <GlobalStyles />
-              <Header />
-              <Route exact path="/signin">
-                <SignIn />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Router>
+          <div className="flex-column justify-flex-start min-100-vh">
+            <Header />
+            <Container>
+              {content.map((item, index) => (
+                <Card key={index} item={item} />
+              ))}
+              <Route exact path="/">
+                <Home />
               </Route>
-              <Container>
-                {content.map((item, index) => (
-                  <Card key={index} item={item} />
-                ))}
-              </Container>
-
-              <Footer />
-            </>
-          </ThemeProvider>
-        </Route>
-      </Router>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+              <Route exact path="/profiles/:profileId">
+                <Profile />
+              </Route>
+            </Container>
+            <Footer />
+          </div>
+        </Router>
+      </ThemeProvider>
     </ApolloProvider>
   );
 }

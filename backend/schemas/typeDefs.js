@@ -1,4 +1,4 @@
-const { graphQL } = require("apollo-server-express");
+const { gql } = require("apollo-server-express");
 const { GraphQLUpload, GraphQLUploadExpress } = require("graphql-upload");
 
 const typeDefs = graphQL`

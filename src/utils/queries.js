@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
 
-export const QUERY_USER = gql`
+export const QUERY_PROFILES = gql`
   query user($surname: String!) {
     user(surname: $surname) {
       _id
@@ -15,8 +15,12 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_MATCH = gql`
-  query interest ($interest: [String!])
-    ($user_type: [String!])
+  query interest ($interest: [String!]){
+    ($user_type: [String!]){
+       _id
+      name
+      interest
+      user_type
+    }
+  }
 `;
-
-
