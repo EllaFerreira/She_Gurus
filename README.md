@@ -79,10 +79,7 @@ Be deployed by Heroku.
 If you want to run this locally on your machine:
 
 - Clone to your local machine from this repo
-- Start by creating the databases by running SOURCE schema.sql;
-- Change the .env.example to a .env file with your MySQL credentials
 - Type npm i on your terminal to install all dependencies
-- Type npm run seed to seed the database
 - Type npm start to run the application
 - Go to http://localhost:3001/ to use the application
 
