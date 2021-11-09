@@ -2,19 +2,15 @@ import { StyledHeader, Nav, Logo, Image } from "./styles/Header.style";
 import { Container } from "./styles/Container.style";
 import { Flex } from "./styles/Flex.style";
 import { Button } from "./styles/Button.style";
-import { useState } from "react";
-import { Modal } from "react-bootstrap";
 
 export default function Header() {
-  const [show, setShow] = useState(false);
-
   return (
     <>
       <StyledHeader>
         <Container>
           <Nav>
             <Logo src="img/logo.svg" alt="logo" />
-            <Button onClick={() => setShow(true)}>Sign in</Button>
+            <Button>Sign in</Button>
           </Nav>
 
           <Flex>

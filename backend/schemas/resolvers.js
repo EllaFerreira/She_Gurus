@@ -1,20 +1,30 @@
-const { UserProfile } = require("../models/index");
+const { UserProfile, Interest } = require("../models/index");
 const { AuthenticationError } = require("apollo-server-express");
+const { signToken } = require("../utils/auth");
+// const fs = require("fs");
+// const path = require("path");
+const { GraphQLUpload, GraphQLUploadExpress } = require("graphql-upload");
 
 const resolvers = {
+  Upload: GraphQLUpload,
+
   Query: {
     profiles: async () => {
-      return UserProfile.find();
+      return await UserProfile.find();
     },
 
     profile: async (parent, { profileId }) => {
-      return UserProfile.findOne({ _id: profileId });
+      return await UserProfile.findOne({ _id: profileId });
+    },
+
+    match: async (parent, { meetingId: interestId }) => {
+      return await Interest.findOne({ _id: interestId });
     },
   },
 
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await UserProfile.create({ name, email, password });
+    addProfile: async (parent, { surname, email, password }) => {
+      const profile = await UserProfile.create({ surname, email, password });
       const token = signToken(profile);
 
       return { token, profile };
@@ -40,7 +50,7 @@ const resolvers = {
       parent,
       { profileId, skill, location, interest, age, user_type }
     ) => {
-      return UserProfile.updateNewInfo(
+      return await UserProfile.updateNewInfo(
         { _id: profileId },
         {
           $addToSet: { skills: skill },
