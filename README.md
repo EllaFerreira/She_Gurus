@@ -1,4 +1,5 @@
-![Title](../public/img/white.logo.svg) 
+![Title](./client/public/img/white.logo.svg)
+
 # Project 3 - She.Gurus - Connecting meaning
 
 ![license](https://img.shields.io/github/license/EllaFerreira/She_Gurus)
@@ -17,7 +18,6 @@ The aim is to build a more unity and more supportive community in areas dominate
 ## Mock up
 
 https://user-images.githubusercontent.com/84433857/140920711-25631381-7702-4fbc-a1cd-b6fd0920fabc.mov
-
 
 ## Deployed Link
 
