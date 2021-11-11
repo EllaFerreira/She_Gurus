@@ -20,7 +20,7 @@ const resolvers = {
     onestudent: async (parent, { studentId }) => {
       return await Student.findOne({ _id: studentId });
     },
-    oneguru: async (parent, { studentId: guruId }) => {
+    oneguru: async (parent, { guruId }) => {
       return await Guru.findOne({ _id: guruId });
     },
     studentreq: async (parent, args, context) => {
