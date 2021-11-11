@@ -1,4 +1,4 @@
-![Title](./public/img/white.logo.svg) 
+![Title](../public/img/white.logo.svg) 
 # Project 3 - She.Gurus - Connecting meaning
 
 ![license](https://img.shields.io/github/license/EllaFerreira/She_Gurus)
