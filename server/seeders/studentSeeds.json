@@ -1,0 +1,63 @@
+[
+  {
+    "surname": "Jessica Smith",
+    "email": "jesssmith@email.com",
+    "password": "pass1",
+    "user_type": "student",
+    "age": 20,
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": []
+  },
+  {
+    "username": "Fran Rosado",
+    "email": "rosado12@email.com",
+    "password": "p123",
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": [],
+    "user_type": "student",
+    "age": 23
+  },
+  {
+    "username": "Sarah Walker",
+    "email": "walkersarah@email.com",
+    "password": "password0333",
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": [],
+    "user_type": "student",
+    "age": 45
+  },
+
+  {
+    "username": "Dalila Simpson",
+    "email": "simpsond@email",
+    "password": "peace21",
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": [],
+    "user_type": "student",
+    "age": 32
+  },
+  {
+    "username": "Ellen Matcheen",
+    "email": "ellen@email.com",
+    "password": "mywordis32",
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": [],
+    "user_type": "student",
+    "age": 34
+  },
+  {
+    "username": "Stela Morato",
+    "email": "stelamorato@email.com",
+    "password": "password10",
+    "location": "Brisbane",
+    "photo": [],
+    "matchs": [],
+    "user_type": "student",
+    "age": 18
+  }
+]

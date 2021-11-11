@@ -1,0 +1,42 @@
+[
+  {
+    "username": "Beck Clark",
+    "email": "beckcl@email.com",
+    "password": "oioi04",
+    "skills": ["JavaScript", "Node", "MongoDB", "LinkedIn", "Resume"],
+    "user_type": "guru",
+    "location": "Brisbane",
+    "photo": [],
+    "age": 27
+  },
+  {
+    "username": "Carla Watson",
+    "email": "carla@email.com",
+    "password": "uuhuha2",
+    "skills": ["LinkedIn", "Resume"],
+    "user_type": "guru",
+    "location": "Brisbane",
+    "photo": [],
+    "age": 31
+  },
+  {
+    "username": "Sharon Stone",
+    "email": "sharon@email.com",
+    "password": "burrito123",
+    "skills": ["LinkedIn", "Resume", "JavaScript"],
+    "user_type": "guru",
+    "location": "Brisbane",
+    "photo": [],
+    "age": 27
+  },
+  {
+    "username": "Rose Bernary",
+    "email": "roseb@email.com",
+    "password": "98878992",
+    "skills": ["LinkedIn", "Resume", "Node", "JavaScript"],
+    "user_type": "guru",
+    "location": "Brisbane",
+    "photo": [],
+    "age": 29
+  }
+]
