@@ -5,14 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "seed": "node seeders/seeds.js",
+    "seed": "node seeders/seed.js",
     "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-express": "^3.5.0",
+    "apollo-server-express": "^2.12.0",
     "aws-sdk": "^2.1026.0",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
