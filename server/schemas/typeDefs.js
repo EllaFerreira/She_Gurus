@@ -7,7 +7,7 @@ const typeDefs = gql`
     surname: String
     email: String
     password: String
-    age: Number
+    age: Int
     photo: String
     location: String
     user_type: String
@@ -25,7 +25,7 @@ const typeDefs = gql`
     surname: String
     email: String
     password: String
-    age: Number
+    age: Int
     location: String
     skills: String
     photo: String
@@ -46,43 +46,46 @@ const typeDefs = gql`
   type Query {
     students: [Student]!
     gurus: [Guru]!
-    match(skilss: String): [Guru]
+    match(skills: [String]): [Guru]
     oneguru(guruId: ID!): Guru
     onestudent(studentId: ID!): Student
     studentreq: Student
     gurureq: Guru
-    showMatch(_id: ID!): showMatch
+    showMatch(_id: ID!): Match
   }
 
   type Mutation {
     loginstudent(email: String!, password: String!): AuthStudent
     loginguru(email: String!, password: String!): AuthGuru
     addMatch(gurus: [ID]!): Match
+
     addStudent(
       surname: String!,
       email: String!,
       password: String!,
-      age: Number!,
+      age: Int!,
       photo: String!,
       location: String!,
       user_type: String!,
     ): AuthStudent
+
     addGuru(
       surname: String!,
       email: String!,
       password: String!,
-      age: Number!,
+      age: Int!,
       photo: String!,
       location: String!,
-      skills: String!,
+      skills: [String]!,
       user_type: String!,
     ): AuthGuru
+
     updateStudent(
       studentId: ID,
       surname: String,
       email: String,
       password: String,
-      age: Number!,
+      age: Int!,
       photo: String!,
       location: String!,
       user_type: String!,
@@ -91,19 +94,23 @@ const typeDefs = gql`
       surname: String!,
       email: String!,
       password: String!,
-      age: Number!,
+      age: Int!,
       photo: String!,
       location: String!,
-      skills: String!,
+      skills: [String]!,
       user_type: String!,
     ): AuthGuru
-    removeStudent(
-      studentId: ID!): Student
-    ): AuthStudent
-    removeGuruSkill(
-      guruId: ID!, skills: String!): Guru
-    ): AuthGuru
+
+    removeStudent(studentId: ID!): AuthStudent
+
+    removeGuruSkill( guruId: ID!, skills: [String]!): Guru
   }
 `;
+
+// const typeDefs = gql`
+// type Student{
+//   name: String
+// }
+// `;
 
 module.exports = typeDefs;
