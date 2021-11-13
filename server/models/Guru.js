@@ -13,9 +13,6 @@ const guruSchema = new Schema({
     required: true,
     unique: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
-    // validate: {
-    //   is_email: true,
-    // },
   },
   password: {
     type: String,
@@ -33,7 +30,6 @@ const guruSchema = new Schema({
     {
       type: String,
       required: true,
-   
     },
   ],
 
@@ -41,13 +37,6 @@ const guruSchema = new Schema({
     type: String,
     required: false,
   },
-
-  user_type: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
 });
 
 guruSchema.pre("save", async function (next) {

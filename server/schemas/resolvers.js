@@ -35,9 +35,13 @@ const resolvers = {
       }
       throw new AuthenticationError("Please sign in to do this request!");
     },
-    match: async (parent, { skills }) => {
-      const params = skills ? { skills } : {};
-      return Guru.find(params);
+    match: async (parent, { skill }) => {
+      const params = skill ? { skill } : {};
+      return Guru.find({
+        skills: {
+          $regex: new RegExp("^" + skill.toLowerCase(), 'i')
+        }
+      });
     },
     showMatch: async (parent, args, context) => {
       const match = new Match({ gurus: args.gurus });
@@ -105,7 +109,7 @@ const resolvers = {
 
     updateStudent: async (
       parent,
-      { studentId, surname, location, photo, age, user_type, email, password },
+      { studentId, surname, location, photo, age, email, password },
       context
     ) => {
       const saltRounds = 10;
@@ -118,7 +122,6 @@ const resolvers = {
               surname: surname,
               location: location,
               photo: photo,
-              user_type: user_type,
               age: age,
               email: email,
               password: password
@@ -146,17 +149,7 @@ const resolvers = {
 
     updateGuru: async (
       parent,
-      {
-        guruId,
-        surname,
-        skills,
-        location,
-        photo,
-        age,
-        user_type,
-        email,
-        password,
-      },
+      { guruId, surname, skills, location, photo, age, email, password },
       context
     ) => {
       const saltRounds = 10;
@@ -170,7 +163,6 @@ const resolvers = {
               location: location,
               skills: skills,
               photo: photo,
-              user_type: user_type,
               age: age,
               email: email,
               password: password

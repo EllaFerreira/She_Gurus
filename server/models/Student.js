@@ -14,9 +14,6 @@ const studentSchema = new Schema({
     required: true,
     unique: true,
     match: [/.+@.+\..+/, "Must match an email address!"],
-    // validate: {
-    //   is_email: true,
-    // },
   },
   password: {
     type: String,
@@ -35,10 +32,7 @@ const studentSchema = new Schema({
     type: String,
     required: false,
   },
-  user_type: {
-    type: String,
-    required: true,
-  },
+
   matchs: [Match.schema],
 });
 
