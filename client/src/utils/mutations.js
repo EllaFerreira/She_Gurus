@@ -90,16 +90,22 @@ export const ADD_GURU = gql`
 
 export const UPDATE_STUDENT = gql`
   mutation updateStudent(
-    $studentId: ID
+    $studentId: ID!
     $surname: String
     $email: String
     $password: String
+    $age: Int
+    $photo: String
+    $location: String
   ) {
     updateStudent(
       studentId: $studentId
       surname: $lastName
       email: $email
       password: $password
+      age: $age
+      photo: $photo
+      location: $location
     ) {
       token
       student {
@@ -112,16 +118,15 @@ export const UPDATE_STUDENT = gql`
 
 export const UPDATE_GURU = gql`
   mutation updateGuru(
-    $guruId: ID
-    surname: String!
-      email: String!
-      password: String!
-      age: Number!
-      photo: String!
-      location: String!
-      skills: String!
+    $guruId: ID!
+      surname: String
+      email: String
+      password: String
+      age: Number
+      photo: String
+      location: String
+      skills: String
       
-    
   ) {
     updateGuru(
       surname: $surname
@@ -131,7 +136,7 @@ export const UPDATE_GURU = gql`
       photo: $photo
       location: $location
       skills: $skills
-      user_type: $user_type
+      
     ) {
       token
       guru {
@@ -149,9 +154,9 @@ export const REMOVE_STUDENT = gql`
     }
   }
 `;
-export const REMOVE_GURU_SKILL = gql`
-  mutation removeGuruSkill($guruId: ID!) {
-    removeGuruSkill(guruId: $guruId) {
+export const UPDATE_GURU_SKILL = gql`
+  mutation updateGuruSkill($guruId: ID!) {
+    updateGuruSkill(guruId: $guruId) {
       _id
       surname
     }
