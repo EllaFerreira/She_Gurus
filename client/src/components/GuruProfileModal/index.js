@@ -115,7 +115,7 @@ export default function GuruProfileModal({ guru, show, handleClose }) {
                 required
               />
             </div>
-            <FileUpload handleAWS={handleAWS} />
+            {/* <Button handleAWS={handleAWS} /> */}
 
             <div className="col-12">
               <button

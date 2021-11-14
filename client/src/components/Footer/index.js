@@ -7,7 +7,8 @@ import { useLocation } from "react-router-dom";
 
 export default function Footer() {
   const location = useLocation();
-
+  const history = false;
+  
   return (
     <StyledFooter>
       <Container>
