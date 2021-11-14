@@ -48,7 +48,6 @@ const typeDefs = gql`
     onestudent(studentId: ID!): Student
     studentreq: Student
     gurureq: Guru
-    showMatch(_id: ID!): Match
   }
 
   type Mutation {
@@ -76,28 +75,28 @@ const typeDefs = gql`
     ): AuthGuru
 
     updateStudent(
-      studentId: ID
-      surname: String!
-      email: String!
-      password: String!
-      age: Int!
-      photo: String!
-      location: String!
+      studentId: ID!
+      surname: String
+      email: String
+      password: String
+      age: Int
+      photo: String
+      location: String
     ): AuthStudent
     updateGuru(
-      guruId: ID
-      surname: String!
-      email: String!
-      password: String!
-      age: Int!
-      photo: String!
-      location: String!
-      skills: [String]!
+      guruId: ID!
+      surname: String
+      email: String
+      password: String
+      age: Int
+      photo: String
+      location: String
+      skills: [String]
     ): AuthGuru
 
     removeStudent(studentId: ID!): Student
 
-    removeGuruSkill(guruId: ID!, skills: [String]!): Guru
+    updateGuruSkill(guruId: ID!, skills: [String]!): Guru
   }
 `;
 

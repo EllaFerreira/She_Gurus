@@ -1,51 +1,47 @@
 import { gql } from "@apollo/client";
 
-export const GET_GURUS = gql`
-  query match($skills: String) {
-    match(skills: $skills) {
-      _id
+export const MATCH_GURUS = gql`
+  query match{
+  match($skill: String){
+    _id
+    surname
+    location
+    photo
+    skills
+    age
+    email
+  }
+}
+`;
+
+export const ONE_GURU_BY_ID = gql`
+  query oneguru {
+    oneguru($guruId: ID!) {
       surname
-      email
-      user_type
       location
-      photo
       skills
       age
+      email
+      photo
     }
   }
 `;
 
-export const GURU_BY_ID = gql`
-  query gurubyid($guruId: ID!) {
-    guru(guruId: $guruId) {
-      _id
-      surname
-      email
-      phone
-      user_type
-      location
-      photo
-      skills
-      age
-    }
-  }
-`;
-
-export const QUERY_MATCH = gql`
-  query getMatch($gurus: [ID]!) {
-    showMatch(gurus: $gurus) {
+//NOT USING IT
+// export const QUERY_MATCH = gql`
+//   query showMatch($gurus: [ID]!) {
+//     showMatch(gurus: $gurus) {
      
-    }
-  }
-`;
+//     }
+//   }
+// `;
 
-export const STUDENT_BY_ID = gql`
-  query getSingleStudent($studentId: ID!) {
+export const ONE_STUDENT_BY_ID = gql`
+  query onestudent($studentId: ID!) {
     onestudent(studentId: $studentId) {
       _id
       surname
       email
-      user_type
       matchs {
         _id
         matchDate
@@ -68,7 +64,6 @@ export const STUDENT_REQ = gql`
       age
       location
       photo
-      user_type
       matchs {
         _id
         matchDate
@@ -89,24 +84,9 @@ export const GURU_REQ = gql`
       surname
       email
       location
-      user_type
       skills
       photo
       age
-    }
-  }
-`;
-export const REMOVE_STUDENT = gql`
-  mutation removeStudent($studentId: ID!) {
-    removeStudent(studentId: $studentId) {
-      _id
-    }
-  }
-`;
-export const REMOVE_GURU_SKILL = gql`
-  mutation removeGuruSkill($guruId: ID!) {
-    removeGuruSkill(guruId: $guruId) {
-      _id
     }
   }
 `;

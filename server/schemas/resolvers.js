@@ -43,24 +43,24 @@ const resolvers = {
         },
       });
     },
-    showMatch: async (parent, args, context) => {
-      const match = new Match({ gurus: args.gurus });
-      const list = [];
+    // showMatch: async (parent, args, context) => {
+    //   const match = new Match({ gurus: args.gurus });
+    //   const list = [];
 
-      const { gurus } = await match.populate("gurus");
+    //   const { gurus } = await match.populate("gurus");
 
-      for (let i = 0; i < gurus.length; i++) {
-        const displayGurus = match.create({
-          name: `Guru name is: ${gurus[i].surname}`,
-          presentation: `${gurus[i].surname} will be happy to get in with you, her skills are ${gurus[i].skills}.`,
-          image: [`${gurus[0].photo}`],
-        });
+    //   for (let i = 0; i < gurus.length; i++) {
+    //     const displayGurus = displayGurus.create({
+    //       name: `Guru name is: ${gurus[i].surname}`,
+    //       presentation: `${gurus[i].surname} will be happy to get in with you, her skills are ${gurus[i].skills}.`,
+    //       image: [`${gurus[0].photo}`],
+    //     });
 
-        list.push({
-          quantity: 1,
-        });
-      }
-    },
+    //     list.push({
+    //       quantity: 1,
+    //     });
+    //   }
+    // },
   },
 
   Mutation: {
@@ -209,10 +209,10 @@ const resolvers = {
     removeStudent: async (parent, { studentId }) => {
       return Student.findOneAndDelete({ _id: studentId });
     },
-    removeGuruSkill: async (parent, { guruId, skills }) => {
-      return Guru.updateNewInfo(
+    updateGuruSkill: async (parent, { guruId, skills }) => {
+      return Guru.findOneAndUpdate(
         { _id: guruId },
-        { $pull: { skills: skills } },
+        { $set: { skills: skills } },
         { new: true }
       );
     },
