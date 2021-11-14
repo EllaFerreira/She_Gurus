@@ -24,7 +24,8 @@ export default function GuruProfileDeatils(props) {
         <Card.Img variant="top" src={guru.photo} />
         <Card.Body>
           <Card.Title>{guru.surname}</Card.Title>
-          <Card.Text>{tutor.skills}</Card.Text>
+          <Card.Text>{guru.skills}</Card.Text>
+          {/* //TODO */}
           <Link className="btn btn-sm btn-warning" to={`/profile/${guru._id}`}>
             Guru Profile
           </Link>

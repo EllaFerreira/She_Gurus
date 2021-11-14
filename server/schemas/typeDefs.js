@@ -77,14 +77,15 @@ const typeDefs = gql`
 
     updateStudent(
       studentId: ID
-      surname: String
-      email: String
-      password: String
+      surname: String!
+      email: String!
+      password: String!
       age: Int!
       photo: String!
       location: String!
     ): AuthStudent
     updateGuru(
+      guruId: ID
       surname: String!
       email: String!
       password: String!
@@ -94,7 +95,7 @@ const typeDefs = gql`
       skills: [String]!
     ): AuthGuru
 
-    removeStudent(studentId: ID!): AuthStudent
+    removeStudent(studentId: ID!): Student
 
     removeGuruSkill(guruId: ID!, skills: [String]!): Guru
   }

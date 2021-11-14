@@ -39,24 +39,24 @@ const resolvers = {
       const params = skill ? { skill } : {};
       return Guru.find({
         skills: {
-          $regex: new RegExp("^" + skill.toLowerCase(), 'i')
-        }
+          $regex: new RegExp("^" + skill.toLowerCase(), "i"),
+        },
       });
     },
     showMatch: async (parent, args, context) => {
       const match = new Match({ gurus: args.gurus });
-      const line_items = [];
+      const list = [];
 
       const { gurus } = await match.populate("gurus");
 
       for (let i = 0; i < gurus.length; i++) {
-        const showGuru = await showGurus.create({
+        const displayGurus = match.create({
           name: `Guru name is: ${gurus[i].surname}`,
           presentation: `${gurus[i].surname} will be happy to get in with you, her skills are ${gurus[i].skills}.`,
           image: [`${gurus[0].photo}`],
         });
 
-        line_items.push({
+        list.push({
           quantity: 1,
         });
       }
@@ -194,7 +194,7 @@ const resolvers = {
       if (context.user) {
         const guru = await Guru.findById(guruId).exec();
         const match = new Match({ gurus: guru });
-
+        // TODO check if is not the same guru
         await Student.findByIdAndUpdate(
           { _id: context.user._id },
           {
@@ -202,7 +202,7 @@ const resolvers = {
           }
         );
 
-        return match;
+        return match.populate("gurus");
       }
       throw new AuthenticationError("Please sign in to process with the match");
     },
