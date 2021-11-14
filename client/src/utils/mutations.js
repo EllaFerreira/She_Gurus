@@ -25,15 +25,15 @@ export const GURU_LOGIN = gql`
     }
   }
 `;
+
 export const ADD_STUDENT = gql`
   mutation addStudent(
-    surname: String!
-      email: String!
-      password: String!
-      age: Number!
-      photo: String!
-      location: String!
-      
+    $surname: String!
+    $email: String!
+    $password: String!
+    $age: Int!
+    $photo: String!
+    $location: String!
   ) {
     addStudent(
       surname: $surname
@@ -42,14 +42,12 @@ export const ADD_STUDENT = gql`
       age: $age
       photo: $photo
       location: $location
-      
     ) {
       token
       student {
         _id
         surname
         email
-        
       }
     }
   }
@@ -57,15 +55,13 @@ export const ADD_STUDENT = gql`
 
 export const ADD_GURU = gql`
   mutation addGuru(
-    mutation addGuru(
-    surname: String!
-      email: String!
-      password: String!
-      age: Number!
-      photo: String!
-      location: String!
-      skills: String!
-      
+    $surname: String!
+    $email: String!
+    $password: String!
+    $age: Int!
+    $photo: String!
+    $location: String!
+    $skills: String!
   ) {
     addGuru(
       surname: $surname
@@ -75,14 +71,12 @@ export const ADD_GURU = gql`
       photo: $photo
       location: $location
       skills: $skills
-      
     ) {
       token
       guru {
         _id
         surname
         email
-        
       }
     }
   }
@@ -119,14 +113,13 @@ export const UPDATE_STUDENT = gql`
 export const UPDATE_GURU = gql`
   mutation updateGuru(
     $guruId: ID!
-      surname: String
-      email: String
-      password: String
-      age: Number
-      photo: String
-      location: String
-      skills: String
-      
+    $surname: String
+    $email: String
+    $password: String
+    $age: Number
+    $photo: String
+    $location: String
+    $skills: String
   ) {
     updateGuru(
       surname: $surname
@@ -136,7 +129,6 @@ export const UPDATE_GURU = gql`
       photo: $photo
       location: $location
       skills: $skills
-      
     ) {
       token
       guru {

@@ -1,22 +1,22 @@
 import { gql } from "@apollo/client";
 
 export const MATCH_GURUS = gql`
-  query match{
-  match($skill: String){
-    _id
-    surname
-    location
-    photo
-    skills
-    age
-    email
+  query match($skill: String) {
+    match(skill: $skill) {
+      _id
+      surname
+      location
+      photo
+      skills
+      age
+      email
+    }
   }
-}
 `;
 
 export const ONE_GURU_BY_ID = gql`
   query oneguru {
-    oneguru($guruId: ID!) {
+    oneguru(guruId: $ID) {
       surname
       location
       skills
@@ -31,7 +31,7 @@ export const ONE_GURU_BY_ID = gql`
 // export const QUERY_MATCH = gql`
 //   query showMatch($gurus: [ID]!) {
 //     showMatch(gurus: $gurus) {
-     
+
 //     }
 //   }
 // `;
