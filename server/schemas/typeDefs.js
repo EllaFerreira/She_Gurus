@@ -10,7 +10,6 @@ const typeDefs = gql`
     age: Int
     photo: String
     location: String
-    user_type: String
     matchs: [Match]
   }
 
@@ -27,16 +26,14 @@ const typeDefs = gql`
     password: String
     age: Int
     location: String
-    skills: String
+    skills: [String]
     photo: String
-    user_type: String
   }
 
   type AuthStudent {
     token: ID!
     student: Student
   }
-
 
   type AuthGuru {
     token: ID!
@@ -46,12 +43,11 @@ const typeDefs = gql`
   type Query {
     students: [Student]!
     gurus: [Guru]!
-    match(skills: [String]): [Guru]
+    match(skill: String): [Guru]
     oneguru(guruId: ID!): Guru
     onestudent(studentId: ID!): Student
     studentreq: Student
     gurureq: Guru
-    showMatch(_id: ID!): Match
   }
 
   type Mutation {
@@ -60,57 +56,48 @@ const typeDefs = gql`
     addMatch(gurus: [ID]!): Match
 
     addStudent(
-      surname: String!,
-      email: String!,
-      password: String!,
-      age: Int!,
-      photo: String!,
-      location: String!,
-      user_type: String!,
+      surname: String!
+      email: String!
+      password: String!
+      age: Int!
+      photo: String!
+      location: String!
     ): AuthStudent
 
     addGuru(
-      surname: String!,
-      email: String!,
-      password: String!,
-      age: Int!,
-      photo: String!,
-      location: String!,
-      skills: [String]!,
-      user_type: String!,
+      surname: String!
+      email: String!
+      password: String!
+      age: Int!
+      photo: String!
+      location: String!
+      skills: [String]!
     ): AuthGuru
 
     updateStudent(
-      studentId: ID,
-      surname: String,
-      email: String,
-      password: String,
-      age: Int!,
-      photo: String!,
-      location: String!,
-      user_type: String!,
+      studentId: ID!
+      surname: String
+      email: String
+      password: String
+      age: Int
+      photo: String
+      location: String
     ): AuthStudent
     updateGuru(
-      surname: String!,
-      email: String!,
-      password: String!,
-      age: Int!,
-      photo: String!,
-      location: String!,
-      skills: [String]!,
-      user_type: String!,
+      guruId: ID!
+      surname: String
+      email: String
+      password: String
+      age: Int
+      photo: String
+      location: String
+      skills: [String]
     ): AuthGuru
 
-    removeStudent(studentId: ID!): AuthStudent
+    removeStudent(studentId: ID!): Student
 
-    removeGuruSkill( guruId: ID!, skills: [String]!): Guru
+    updateGuruSkill(guruId: ID!, skills: [String]!): Guru
   }
 `;
-
-// const typeDefs = gql`
-// type Student{
-//   name: String
-// }
-// `;
 
 module.exports = typeDefs;

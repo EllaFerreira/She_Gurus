@@ -35,28 +35,32 @@ const resolvers = {
       }
       throw new AuthenticationError("Please sign in to do this request!");
     },
-    match: async (parent, { skills }) => {
-      const params = skills ? { skills } : {};
-      return Guru.find(params);
+    match: async (parent, { skill }) => {
+      const params = skill ? { skill } : {};
+      return Guru.find({
+        skills: {
+          $regex: new RegExp("^" + skill.toLowerCase(), "i"),
+        },
+      });
     },
-    showMatch: async (parent, args, context) => {
-      const match = new Match({ gurus: args.gurus });
-      const line_items = [];
+    // showMatch: async (parent, args, context) => {
+    //   const match = new Match({ gurus: args.gurus });
+    //   const list = [];
 
-      const { gurus } = await match.populate("gurus");
+    //   const { gurus } = await match.populate("gurus");
 
-      for (let i = 0; i < gurus.length; i++) {
-        const showGuru = await showGurus.create({
-          name: `Guru name is: ${gurus[i].surname}`,
-          presentation: `${gurus[i].surname} will be happy to get in with you, her skills are ${gurus[i].skills}.`,
-          image: [`${gurus[0].photo}`],
-        });
+    //   for (let i = 0; i < gurus.length; i++) {
+    //     const displayGurus = displayGurus.create({
+    //       name: `Guru name is: ${gurus[i].surname}`,
+    //       presentation: `${gurus[i].surname} will be happy to get in with you, her skills are ${gurus[i].skills}.`,
+    //       image: [`${gurus[0].photo}`],
+    //     });
 
-        line_items.push({
-          quantity: 1,
-        });
-      }
-    },
+    //     list.push({
+    //       quantity: 1,
+    //     });
+    //   }
+    // },
   },
 
   Mutation: {
@@ -105,7 +109,7 @@ const resolvers = {
 
     updateStudent: async (
       parent,
-      { studentId, surname, location, photo, age, user_type, email, password },
+      { studentId, surname, location, photo, age, email, password },
       context
     ) => {
       const saltRounds = 10;
@@ -118,7 +122,6 @@ const resolvers = {
               surname: surname,
               location: location,
               photo: photo,
-              user_type: user_type,
               age: age,
               email: email,
               password: password
@@ -146,17 +149,7 @@ const resolvers = {
 
     updateGuru: async (
       parent,
-      {
-        guruId,
-        surname,
-        skills,
-        location,
-        photo,
-        age,
-        user_type,
-        email,
-        password,
-      },
+      { guruId, surname, skills, location, photo, age, email, password },
       context
     ) => {
       const saltRounds = 10;
@@ -170,7 +163,6 @@ const resolvers = {
               location: location,
               skills: skills,
               photo: photo,
-              user_type: user_type,
               age: age,
               email: email,
               password: password
@@ -202,7 +194,7 @@ const resolvers = {
       if (context.user) {
         const guru = await Guru.findById(guruId).exec();
         const match = new Match({ gurus: guru });
-
+        // TODO check if is not the same guru
         await Student.findByIdAndUpdate(
           { _id: context.user._id },
           {
@@ -210,17 +202,17 @@ const resolvers = {
           }
         );
 
-        return match;
+        return match.populate("gurus");
       }
       throw new AuthenticationError("Please sign in to process with the match");
     },
     removeStudent: async (parent, { studentId }) => {
       return Student.findOneAndDelete({ _id: studentId });
     },
-    removeGuruSkill: async (parent, { guruId, skills }) => {
-      return Guru.updateNewInfo(
+    updateGuruSkill: async (parent, { guruId, skills }) => {
+      return Guru.findOneAndUpdate(
         { _id: guruId },
-        { $pull: { skills: skills } },
+        { $set: { skills: skills } },
         { new: true }
       );
     },

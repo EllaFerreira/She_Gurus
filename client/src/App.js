@@ -4,12 +4,7 @@ import content from "./content";
 import { Container } from "./components/styles/Container.style";
 import { GlobalStyles } from "./components/styles/Global";
 import { Header, Footer, Card } from "./components";
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
-} from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createUploadLink } from "apollo-upload-client";

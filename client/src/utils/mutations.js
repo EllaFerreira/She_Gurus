@@ -8,7 +8,6 @@ export const STUDENT_LOGIN = gql`
         _id
         surname
         email
-        user_type
       }
     }
   }
@@ -22,7 +21,6 @@ export const GURU_LOGIN = gql`
         _id
         surname
         email
-        user_type
       }
     }
   }
@@ -35,7 +33,7 @@ export const ADD_STUDENT = gql`
       age: Number!
       photo: String!
       location: String!
-      user_type: String!
+      
   ) {
     addStudent(
       surname: $surname
@@ -44,14 +42,14 @@ export const ADD_STUDENT = gql`
       age: $age
       photo: $photo
       location: $location
-      user_type: $user_type
+      
     ) {
       token
       student {
         _id
         surname
         email
-        user_type
+        
       }
     }
   }
@@ -67,7 +65,7 @@ export const ADD_GURU = gql`
       photo: String!
       location: String!
       skills: String!
-      user_type: String!
+      
   ) {
     addGuru(
       surname: $surname
@@ -77,14 +75,14 @@ export const ADD_GURU = gql`
       photo: $photo
       location: $location
       skills: $skills
-      user_type: $user_type
+      
     ) {
       token
       guru {
         _id
         surname
         email
-        user_type
+        
       }
     }
   }
@@ -122,7 +120,7 @@ export const UPDATE_GURU = gql`
       photo: String!
       location: String!
       skills: String!
-      user_type: String!
+      
     
   ) {
     updateGuru(
@@ -147,6 +145,7 @@ export const REMOVE_STUDENT = gql`
   mutation removeStudent($studentId: ID!) {
     removeStudent(studentId: $studentId) {
       _id
+      surname
     }
   }
 `;
@@ -154,6 +153,7 @@ export const REMOVE_GURU_SKILL = gql`
   mutation removeGuruSkill($guruId: ID!) {
     removeGuruSkill(guruId: $guruId) {
       _id
+      surname
     }
   }
 `;
