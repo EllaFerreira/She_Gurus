@@ -1,8 +1,8 @@
 import React from "react";
-import SocialIcons from "./SocialIcons";
-import { Container } from "./styles/Container.style";
-import { Flex } from "./styles/Flex.style";
-import { StyledFooter } from "./styles/Footer.style";
+import SocialIcons from "../styles/SocialIcons.style";
+import Container from "../styles/Container.style";
+import Flex from "../styles/Flex.style";
+import StyledFooter from "../styles/Footer.style";
 import { useLocation } from "react-router-dom";
 
 export default function Footer() {

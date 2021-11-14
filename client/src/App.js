@@ -1,19 +1,21 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import content from "./content";
-import { Container } from "./components/styles/Container.style";
-import { GlobalStyles } from "./components/styles/Global";
-import { Header, Footer, Card } from "./components";
+import Container from "./components/styles/Container.style";
+import GlobalStyles from "./components/styles/Global.style";
+import Header from "./components/Header/index";
+import Footer from "./components/Footer/index";
+import Card from "./components/Card/index";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createUploadLink } from "apollo-upload-client";
 
-import Home from "./pages/Home";
-import Profile from "./pages/Profile";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import SearchGuru from "./pages/SearchGuru";
+import Home from "./components/pages/Home";
+import Profile from "./components/pages/Profile";
+import Signup from "./components/pages/Signup";
+import Login from "./components/pages/Login";
+import SearchGuru from "./components/pages/SearchGuru";
 
 const httpLink = createUploadLink({
   uri: "/graphql",

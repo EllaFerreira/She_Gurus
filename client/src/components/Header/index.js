@@ -1,9 +1,9 @@
-import { StyledHeader, Nav, Logo, Image } from "./styles/Header.style";
-import { Container } from "../styles/Container.style";
-import { Flex } from "../styles/Flex.style";
-import { Button } from "../styles/Button.style";
+import { StyledHeader, Nav, Logo, Image } from "../styles/Header.style";
+import Container from "../styles/Container.style";
+import Flex from "../styles/Flex.style";
+import Button from "../styles/Button.style";
 import React from "react";
-import { Profile } from "../Profile/index";
+import Profile from "../Profile/index";
 import { Link, useHistory } from "react-router-dom";
 import Auth from "../../utils/auth";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PlaceHolderImg from "../../../public/img/placeholder.png";
 import EmptyState from "../../components/EmptyState/index";
-import GuruProfileDetails from "../GuruProfileDeatils/index";
+// import GuruProfileDetails from "../GuruProfileDeatils/index";
 
 export default function Card({ gurus, skills }) {
   function cardDescription(skills) {

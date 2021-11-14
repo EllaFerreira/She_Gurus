@@ -162,3 +162,17 @@ export const UPDATE_GURU_SKILL = gql`
     }
   }
 `;
+
+export const ADD_MATCH = gql`
+  mutation addmatch($gurus: [ID]!) {
+    addMatch(gurus: [ID]) {
+      _id
+      gurus {
+        _id
+        surname
+        email
+      }
+      matchDate
+    }
+  }
+`;
