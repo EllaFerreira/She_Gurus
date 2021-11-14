@@ -1,17 +1,21 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.form`
+const StyledForm = styled.form`
   background-color: ${({ theme }) => theme.colors.header};
   padding: 40px 0;
 `;
+export default StyledForm;
 
-export const InputGroup = styled.inputgroup`
+const InputGroup = styled.inputgroup`
 background-color: ${({ theme }) => theme.mobile})`;
 
-export const Modal = styled.modal`
+export default InputGroup
+
+const Modal = styled.modal`
   width: 375px;
   margin-left: 40px;
   @media (max-width: ${({ theme }) => theme.mobile}) {
     margin: 40px 0 30px;
   }
 `;
+export default Modal

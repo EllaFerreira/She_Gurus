@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { uploadFile } from "react-s3";
+import React from "react";
 
 const S3_BUCKET = process.env.REACT_APP_HEROKU_AWS_BUCKET;
 const REGION = process.env.REACT_APP_HEROKU_AWS_DEFAULT_REGION;
@@ -22,7 +23,7 @@ export default function PhotoHolder({ handleAWS }) {
     setSelectPhoto(newPhoto);
 
     if (newPhoto) {
-      uploadPhoto(newPhoto, config)
+      uploadFile(newPhoto, config)
         .then((data) => {
           if (data) {
             handleAWS({ photo: data.location });

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledSocialIcons = styled.div`
+const StyledSocialIcons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,3 +20,4 @@ export const StyledSocialIcons = styled.div`
     text-decoration: none;
   }
 `;
+export default StyledSocialIcons;
