@@ -2,12 +2,12 @@ import { useState, React } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { Button } from "react-bootstrap";
-import { ONE_STUDENT_BY_ID } from "../../utils/queries";
-import StudentProfileModal from "../StudentProfileModal/index";
+import { ONE_STUDENT_BY_ID } from "../utils/queries";
+import StudentProfileModal from "../components/StudentProfileModal/index";
 // import GuruProfileModal from "../GuruProfileModal/index";
-import GuruProfileList from "../GuruProfileList";
-import ContentLoader from "../Loader/index";
-import PageNotFound from "../PageNotFound/index";
+import GuruProfileList from "../components/GuruProfileList/index";
+import ContentLoader from "../components/Loader/index";
+import PageNotFound from "../components/PageNotFound/index";
 
 const Profile = () => {
   const [show, setShow] = useState("");

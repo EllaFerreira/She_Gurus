@@ -11,7 +11,7 @@ export default function StudentProfileModal({ student, show, handleClose }) {
     studentId: `${student._id}`,
     surname: `${student.surname}`,
     email: `${student.email}`,
-    user_type: `${student.user_type}`,
+    
     password: "",
   });
 

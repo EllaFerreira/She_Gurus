@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { STUDENT_LOGIN, GURU_LOGIN } from "../../utils/mutations";
-import ContentLoader from "../Loader/index";
-import PageNotFound from "../PageNotFound/index";
+import { STUDENT_LOGIN, GURU_LOGIN } from "../utils/mutations";
+import ContentLoader from "../components/Loader/index";
+import PageNotFound from "../components/PageNotFound/index";
 
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { loading, data, error }] = useMutation(
-    STUDENT_LOGIN,
-    GURU_LOGIN
-  );
+
+  const [loginStudent, { error, loading: loadingStudent, data: dataStudent }] =
+    useMutation(STUDENT_LOGIN);
+  const [loginGuru, { loading: loadingGuru, data: dataGuru }] =
+    useMutation(GURU_LOGIN);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -28,14 +29,17 @@ export default function Login() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
-    try {
-      const { data } = await login({
+    if(formState.user_type === 'student'){
+      const { data } = await loginStudent({
         variables: { ...formState },
       });
-
-      Auth.login(data.login.token);
-    } catch (e) {
-      console.error(e);
+    
+      Auth.login(data.loginStudent.token);
+    }else{
+      const { data } = await loginGuru({
+        variables: { ...formState },
+      });
+      Auth.login(data.loginGuru.token);
     }
 
     // clear form values
@@ -47,7 +51,7 @@ export default function Login() {
 
   const getAuthorization = localStorage.getItem("id_token");
 
-  if (loading) {
+  if (loadingGuru || loadingStudent) {
     return <ContentLoader />;
   } else if (getAuthorization) {
     return <PageNotFound />;
@@ -59,9 +63,9 @@ export default function Login() {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-            {data ? (
+            {(dataStudent || dataGuru) ? (
               <p>
-                Success! You may now head{" "}
+                Yeah, You made it! {" "}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
@@ -76,7 +80,7 @@ export default function Login() {
                 />
                 <input
                   className="form-input"
-                  placeholder="******"
+                  placeholder="password"
                   name="password"
                   type="password"
                   value={formState.password}

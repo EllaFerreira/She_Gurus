@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
-import Profile from "../Profile/index";
-import ContentLoader from "../Loader/index";
-import { MATCH_GURUS } from "../../utils/queries";
+import Profile from "../components/Profile/index";
+import ContentLoader from "../components/Loader/index";
+import { MATCH_GURUS } from "../utils/queries";
 
 const Home = () => {
   const { loading, data } = useQuery(MATCH_GURUS);

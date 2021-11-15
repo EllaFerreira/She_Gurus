@@ -1,9 +1,9 @@
 import React from "react";
-import { StyledCard } from "./styles/Card.style";
+import Card from "../components/styles/Card.style";
 
-export default function Card({ item: { id, title, body, image } }) {
+function CardStyled({item: { id, title, body, image }}) {
   return (
-    <StyledCard layout={id % 2 === 0 && "row-reverse"}>
+    <Card layout={id % 2 === 0 && "row-reverse"}>
       <div>
         <h2>{title}</h2>
         <p>{body}</p>
@@ -12,6 +12,7 @@ export default function Card({ item: { id, title, body, image } }) {
       <div>
         <img src={`./img/${image}`} alt="" />
       </div>
-    </StyledCard>
+    </Card>
   );
 }
+export default CardStyled;
