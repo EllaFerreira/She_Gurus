@@ -27,9 +27,7 @@ export default function UserProfile({ userType, userId }) {
     }
     default: {
       return (
-        <>
-          <h1>Test</h1>
-        </>
+        ''
       );
     }
   }

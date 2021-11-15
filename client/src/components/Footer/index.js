@@ -1,5 +1,5 @@
 import React from "react";
-import SocialIcons from "../styles/SocialIcons.style";
+import SocialIcons from "../../mycomponents/SocialIcons";
 import Container from "../styles/Container.style";
 import Flex from "../styles/Flex.style";
 import StyledFooter from "../styles/Footer.style";
@@ -15,7 +15,7 @@ export default function Footer() {
         {location.pathname !== "/" && (
           <button
             className="btn btn-dark mb-3"
-            onClick={() => history.goBack()}
+            onClick={() => history.goBack(true)}
           >
             &larr; Go Back
           </button>

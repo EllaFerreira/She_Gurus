@@ -4,6 +4,7 @@ import PageNotFound from "../components/PageNotFound/index";
 import ContentLoader from "../components/Loader/index";
 import { useMutation } from "@apollo/client";
 import { ADD_STUDENT, ADD_GURU } from "../utils/mutations";
+import {DropdownButton, Dropdown, Form, Button} from 'react-bootstrap'
 
 import Auth from "../utils/auth";
 
@@ -13,7 +14,7 @@ const Signup = () => {
     surname: "",
     email: "",
     password: "",
-    
+    user_type: "",
   });
   const [addStudent, { error, data: dataStudent, loading: loadingStudent }] = useMutation(ADD_STUDENT);
   const [addGuru, { data: dataGuru , loading: loadingGuru}] = useMutation(ADD_GURU);
@@ -40,7 +41,7 @@ const Signup = () => {
   
       Auth.login(data.addStudent.token);
     }else{
-      const { data } = await addStudent({
+      const { data } = await addGuru({
         variables: { ...formState },
       });
   
@@ -64,45 +65,61 @@ const Signup = () => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
-            {(dataStudent || dataGuru) ? (
+            {dataStudent || dataGuru ? (
               <p>
                 Success! You may now head{" "}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="surname"
-                  name="surname"
-                  type="text"
-                  value={formState.surname}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-info"
-                  style={{ cursor: "pointer" }}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
+              <Form.Group>
+                <Form onSubmit={handleFormSubmit}>
+                  <input
+                    className="form-input"
+                    placeholder="surname"
+                    name="surname"
+                    type="text"
+                    value={formState.surname}
+                    onChange={handleChange}
+                  />
+                  <input
+                    className="form-input"
+                    placeholder="Your email"
+                    name="email"
+                    type="email"
+                    value={formState.email}
+                    onChange={handleChange}
+                  />
+                  <input
+                    className="form-input"
+                    placeholder="password"
+                    name="password"
+                    type="password"
+                    value={formState.password}
+                    onChange={handleChange}
+                  />
+
+                  <DropdownButton
+                    id="dropdown-item-button"
+                    title="Dropdown button"
+                  >
+                    <Dropdown.ItemText>Select user type</Dropdown.ItemText>
+                    <Dropdown.Item as="button">
+                      Student{formState.user_type}
+                    </Dropdown.Item>
+                    <Dropdown.Item as="button">
+                      Guru{formState.user_type}
+                    </Dropdown.Item>
+                  </DropdownButton>
+
+                  <Button
+                    className="btn btn-block btn-info"
+                    style={{ cursor: "pointer" }}
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                </Form>
+              </Form.Group>
             )}
 
             {error && (

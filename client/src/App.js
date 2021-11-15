@@ -71,7 +71,7 @@ function App() {
                 element={<Profile/>}
                 ></Route>
             </Routes>
-                <AboutCardList/>
+                {AboutCardList}
           </Container>
             <Footer />
           </Router>

@@ -29,11 +29,11 @@ export default function Header() {
                 userType={Auth.getProfile()?.data.user_type}
                 userId={Auth.getProfile()?.data._id}
               />
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <a className="nav-link logout-btn" href="/" onClick={logout}>
                   Logout
                 </a>
-              </li>
+              </li> */}
             </>
           </Nav>
 
@@ -54,7 +54,7 @@ export default function Header() {
               </Link>
               <Link to={`/signin`}>
                 <Button bg="#ff0099" color="#fff">
-                  Sign in
+                  Login
                 </Button>
               </Link>
             </div>

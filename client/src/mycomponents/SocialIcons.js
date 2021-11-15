@@ -1,7 +1,8 @@
+import React from 'react'
 import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { StyledSocialIcons } from "./styles/SocialIcons.style";
+import  StyledSocialIcons  from "../components/styles/SocialIcons.style";
 
-export default function SocialIcons() {
+function SocialIcons() {
   return (
     <StyledSocialIcons>
       <li>
@@ -22,3 +23,4 @@ export default function SocialIcons() {
     </StyledSocialIcons>
   );
 }
+export default SocialIcons
