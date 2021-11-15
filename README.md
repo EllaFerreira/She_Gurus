@@ -1,6 +1,6 @@
 ![Title](./client/public/img/white.logo.svg)
 
-# Project 3 - She.Gurus - Connecting meaning
+# She.Gurus - Connecting meaning
 
 ![license](https://img.shields.io/github/license/EllaFerreira/She_Gurus)
 ![Contributor](https://img.shields.io/badge/Contributors-1-purple.svg)
