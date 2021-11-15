@@ -1,5 +1,5 @@
 import React from "react";
-import Placeholder from "../../assets/placeholder.png";
+import Placeholder from "../assets/placeholder.png";
 import Auth from "../utils/auth";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";

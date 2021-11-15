@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledCard = styled.div`
+const Card = styled.div`
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -19,4 +19,4 @@ const StyledCard = styled.div`
     flex-direction: column;
   }
 `;
-export default StyledCard;
+export default Card;

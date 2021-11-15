@@ -26,8 +26,8 @@ export default function Header() {
             </Link>
             <>
               <Profile
-                userType={Auth.getProfile().data.user_type}
-                userId={Auth.getProfile().data._id}
+                userType={Auth.getProfile()?.data.user_type}
+                userId={Auth.getProfile()?.data._id}
               />
               <li className="nav-item">
                 <a className="nav-link logout-btn" href="/" onClick={logout}>

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
-import { STUDENT_LOGIN, GURU_LOGIN } from "../../utils/mutations";
-import ContentLoader from "../Loader/index";
-import PageNotFound from "../PageNotFound/index";
+import { STUDENT_LOGIN, GURU_LOGIN } from "../utils/mutations";
+import ContentLoader from "../components/Loader/index";
+import PageNotFound from "../components/PageNotFound/index";
 
-import Auth from "../../utils/auth";
+import Auth from "../utils/auth";
 
 export default function Login() {
   const [formState, setFormState] = useState({ email: "", password: "" });
