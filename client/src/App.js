@@ -11,11 +11,11 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createUploadLink } from "apollo-upload-client";
 
-import Home from "./components/pages/Home";
-import Profile from "./components/pages/Profile";
-import Signup from "./components/pages/Signup";
-import Login from "./components/pages/Login";
-import SearchGuru from "./components/pages/SearchGuru";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import SearchGuru from "./pages/SearchGuru";
 
 const httpLink = createUploadLink({
   uri: "/graphql",
